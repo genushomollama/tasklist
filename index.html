@@ -11,7 +11,30 @@
 <body>
   <h1>TaskList</h1>
 
-  
+  <div class="form">
+      <label for="name">Name</label>
+      <input type="text" id="taskName" name="taskName" class="taskInput" value="activity name">
+
+      <label for="hr">hr</label>
+      <input type="text" id="taskHr" name="taskHr" class="taskHr" value="0">
+
+      <label for="min">min</label>
+      <input type="text" id="taskMin" name="taskMin" class="taskMin" value="0">
+
+      <label for="sec">sec</label>
+      <input type="text" id="taskSec" name="taskSec" class="taskSec" value="0">
+
+      <input type="submit" id="addTaskButton" class="addTaskButton" value="Add">
+  </div>
+
+  <div class="taskManagement">
+      <div class="taskList">
+          <!-- TODO: Build the classlist w/ js... add drag and drop functionality -->
+      </div>
+      <div id="play" class="taskManagementButton">Play Button</div>
+      <div id="pause" class="taskManagementButton">Pause Button</div>
+  </div>
+
   <script src="scripts/objects.js"></script>
   <script src="scripts/functions.js"></script>
 </body>
