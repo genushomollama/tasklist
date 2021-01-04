@@ -7,10 +7,14 @@ class Task {
   }
 
   // Todo getters and setters
-}
-
-class TaskList {
-  constructor() {
-    // this.tasks = 
+  getSeconds() {
+      let totalSeconds = (this.hour * 60 * 60) + (this.minutes * 60) + this.seconds;
+      return totalSeconds;
   }
 }
+
+// class TaskList {
+//   constructor() {
+//     // this.tasks =
+//   }
+// }

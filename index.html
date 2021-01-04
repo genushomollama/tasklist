@@ -11,7 +11,7 @@
 <body>
   <h1>TaskList</h1>
 
-  <div class="form">
+  <div class="form" style="border: red solid;">
       <label for="name">Name</label>
       <input type="text" id="taskName" name="taskName" class="taskInput" value="activity name">
 
@@ -28,11 +28,12 @@
   </div>
 
   <div class="taskManagement">
-      <div class="taskList">
+      <div class="taskList" id="taskList" style="border: black dashed;">
+          <h2>Tasks will go here</h2>
           <!-- TODO: Build the classlist w/ js... add drag and drop functionality -->
       </div>
-      <div id="play" class="taskManagementButton">Play Button</div>
-      <div id="pause" class="taskManagementButton">Pause Button</div>
+      <div id="play" class="taskManagementButton" style="border: green dashed;">Play Button</div>
+      <div id="pause" class="taskManagementButton" style="border: red dashed;">Pause Button</div>
   </div>
 
   <script src="scripts/objects.js"></script>
