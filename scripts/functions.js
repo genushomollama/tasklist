@@ -8,6 +8,11 @@ const newTaskButton = document.getElementById("addTaskButton");
 // list to populate with tasks
 const taskListDisplay = document.getElementById("taskList");
 
+// play and pause buttons
+const playButton = document.getElementById("play");
+const pauseButton = document.getElementById("pause");
+const timeLeft = document.getElementById("currentTime");
+
 // init environment variables
 let currentTask = 0;
 let paused = false;
@@ -19,9 +24,20 @@ let taskAlarm;
 let currentTimeDisplay;
 var sound = new Audio("https://freesound.org/data/previews/519/519177_4753243-lq.mp3");
 
-// function decrementTimerDisplay() {
-//     if (currentSec > )
-// }
+function decrementTimerDisplay() {
+    // decrement seconds if > 0
+    if (currentSec > 0) {
+        currentSec = currentSec - 1;
+    } else if (currentMin > 0) { // decrement minutes and then set seconds to 59
+        currentMin = currentMin - 1;
+        currentSec = 59;
+    } else if (currentHr > 0) { // decrement hours and set minutes to 59
+        currentHr = currentHr - 1;
+        currentMin = 59;
+        currentSec = 59;
+    }
+    currentTime.innerText= currentHr + ":" + currentMin + ":" + currentSec;
+}
 
 function soundAlarm() {
     sound.currentTime = 0;
@@ -44,8 +60,10 @@ function startTask(currentTask) {
     currentHr = currentTask.hour;
     currentMin = currentTask.minute;
     currentSec = currentTask.second;
-    currentTimeDisplay = window.setInterval(decrementTimerDisplay(), 1000);
-    taskAlarm = window.setTimeout(soundAlarm(), currentTask.getSeconds());
+    currentTime.innerText= currentHr + ":" + currentMin + ":" + currentSec;
+    currentTimeDisplay = window.setInterval(function () { decrementTimerDisplay(); }, 1000);
+    let timeToAlarm = currentTask.getSeconds() * 1000;
+    taskAlarm = window.setTimeout(function () { soundAlarm(); }, timeToAlarm);
 
 }
 
@@ -61,12 +79,13 @@ function resumeAlarm() {
         let timeLeft = (currentHr * 60 * 60) + (currentMin * 60) + currentSec;
         currentTimeDisplay = window.setInterval(decrementTimerDisplay(), 1000);
         taskAlarm = window.setTimeout(soundAlarm(), timeLeft);
-
+        // TODO: was something suppossed to be here ????
     } else {
         // select next task and call startTask
         if (currentTask < taskList.length) {
             startTask(taskList[currentTask]);
             currentTask = (currentTask + 1) % taskList.length;
+            // TODO: start next task
         }
     }
 }
@@ -76,3 +95,19 @@ function resumeAlarm() {
 newTaskButton.addEventListener("click", function () {
     addTask();
 });
+
+// attach event handler for starting the clock
+// TODO: possibly attach listener to the play image instead of it's container
+playButton.addEventListener("click", function () {
+    resumeAlarm();
+});
+
+
+// TEST CODE will be deleted
+// add task newTaskHr.value, newTaskMin.value, newTaskSec.value)
+newTaskName.value = "Test Task 1";
+newTaskHr.value = 0;
+newTaskMin.value = 0;
+newTaskSec.value = 30;
+addTask();
+// END TEST CODE

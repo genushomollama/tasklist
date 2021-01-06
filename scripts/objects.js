@@ -8,7 +8,8 @@ class Task {
 
   // Todo getters and setters
   getSeconds() {
-      let totalSeconds = (this.hour * 60 * 60) + (this.minutes * 60) + this.seconds;
+      // let totalSeconds = (parseInt(this.hour, 10) * 60 * 60) + (parseInt(this.minute, 10) * 60) + parseInt(this.second, 10);
+      let totalSeconds = (this.hour * 60 * 60) + (this.minute * 60) + this.second;
       return totalSeconds;
   }
 }
