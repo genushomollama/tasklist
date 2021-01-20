@@ -53,6 +53,23 @@ function addTask() {
     var newTaskElement = document.createElement("p");
     newTaskElement.innerText = newTask.name + " " + newTask.hour + ":" + newTask.minute + ":" + newTask.second;
     taskListDisplay.appendChild(newTaskElement);
+    // add event listener to the new element for editing
+    newTaskElement.addEventListener("click", function () {
+        // TODO: edit tasks
+        console.log("You are trying to edit the task named: " + newTask.name);
+        // replace time with a form with those values
+        // add a save button and attach an event listener to that
+        var saveButton = document.createElement("input");
+        saveButton.type = "submit";
+        saveButton.class = "saveTaskButton";
+        saveButton.value = "Save";
+        newTaskElement.appendChild(saveButton);
+    })
+    // Todo: add event listener to the new element for drag and drop
+}
+
+function saveChanges() {
+    // call resetData()
 }
 
 // start timer for task
@@ -105,9 +122,9 @@ playButton.addEventListener("click", function () {
 
 // TEST CODE will be deleted
 // add task newTaskHr.value, newTaskMin.value, newTaskSec.value)
-newTaskName.value = "Test Task 1";
-newTaskHr.value = 0;
-newTaskMin.value = 0;
-newTaskSec.value = 30;
-addTask();
+// newTaskName.value = "Test Task 1";
+// newTaskHr.value = 0;
+// newTaskMin.value = 0;
+// newTaskSec.value = 30;
+// addTask();
 // END TEST CODE

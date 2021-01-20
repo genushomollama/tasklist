@@ -12,6 +12,13 @@ class Task {
       let totalSeconds = (this.hour * 60 * 60) + (this.minute * 60) + this.second;
       return totalSeconds;
   }
+
+  resetData(name, hr, min, sec) {
+    this.name = name;
+    this.hour = hr;
+    this.minute = min;
+    this.second = sec;
+  }
 }
 
 // class TaskList {
